@@ -395,7 +395,7 @@
       dots.forEach(function (d, j) { d.classList.toggle('active', j === idx); });
       caption.textContent = o.names[idx];
     }
-    function play() { if (!reduced && !timer) timer = setInterval(function () { go(idx + 1); }, 3000); }
+    function play() { if (!reduced && !timer) timer = setInterval(function () { go(idx + 1); }, 2000); }
     function pause() { clearInterval(timer); timer = null; }
     document.getElementById(o.prev).addEventListener('click', function () { go(idx - 1); });
     document.getElementById(o.next).addEventListener('click', function () { go(idx + 1); });
