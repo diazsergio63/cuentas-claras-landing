@@ -95,22 +95,45 @@
   .tool-card h3 { color: var(--green-dark); font-size: 1.3rem; margin-bottom: 8px; }
   .tool-card p { color: var(--muted); }
 
+
+  /* Placeholder de la planilla */
+  .sheet-placeholder { margin-top: 24px; border: 2px dashed var(--green-mid); border-radius: var(--radius); background: var(--bg); min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); font-weight: 500; text-align: center; padding: 24px; }
+  .sheet-placeholder .icon { font-size: 2.4rem; }
+  .sheet-placeholder small { font-size: .8rem; opacity: .8; }
+
+  /* Mockup de celular */
+  .phone-section { text-align: center; }
+  .phone { position: relative; width: 260px; aspect-ratio: 9 / 19; margin: 0 auto; background: #1A1A1A; border-radius: 40px; padding: 10px; box-shadow: 0 24px 48px rgba(26,122,74,.3), inset 0 0 0 2px #333; }
+  .phone::before { content: ""; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 38%; height: 20px; background: #1A1A1A; border-radius: 0 0 14px 14px; z-index: 3; }
+  .screen { width: 100%; height: 100%; border-radius: 30px; overflow: hidden; background: #fff; position: relative; }
+  .track { display: flex; height: 100%; transition: transform .4s ease; touch-action: pan-y; }
+  .slide { flex: 0 0 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #eef3f0; color: var(--muted); font-size: .85rem; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
+  .arrow { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--green-dark); background: #fff; color: var(--green-dark); font-size: 1.2rem; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .arrow:hover { background: var(--green-dark); color: #fff; }
+  .arrow:focus-visible, .dot:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .dots { display: flex; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; border: 0; background: #c5d6cd; cursor: pointer; padding: 0; }
+  .dot.active { background: var(--green-dark); transform: scale(1.3); }
+  .caption { margin-top: 12px; color: var(--muted); font-weight: 500; min-height: 1.6em; }
+
   /* 4. Cómo funciona */
   .steps { display: grid; gap: 28px; grid-template-columns: 1fr; position: relative; }
   .step { display: flex; gap: 18px; align-items: flex-start; position: relative; }
   .step-num {
-    flex: 0 0 52px; height: 52px; border-radius: 50%;
+    flex: 0 0 60px; width: 60px; height: 60px; border-radius: 50%;
     background: var(--green-dark); color: #fff;
-    font-weight: 700; font-size: 1.3rem;
+    font-weight: 700; font-size: 20px; line-height: 1;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 0 0 6px rgba(45,158,107,.18);
     position: relative; z-index: 1;
   }
   .step:not(:last-child)::after { /* línea de progreso vertical (mobile) */
-    content: ""; position: absolute; left: 25px; top: 56px; bottom: -28px; width: 2px;
+    content: ""; position: absolute; left: 29px; top: 64px; bottom: -28px; width: 2px;
     background: repeating-linear-gradient(to bottom, var(--green-mid) 0 6px, transparent 6px 12px);
   }
-  .step p { font-weight: 500; padding-top: 12px; }
+  .step p { font-weight: 500; padding-top: 16px; }
 
   /* 5. Para quién es */
   .for-who { background: #fff; }
@@ -158,7 +181,7 @@
     .step { flex-direction: column; align-items: center; text-align: center; }
     .step p { padding-top: 0; }
     .step:not(:last-child)::after { /* línea de progreso horizontal */
-      left: calc(50% + 40px); right: calc(-50% + 40px); top: 25px; bottom: auto; width: auto; height: 2px;
+      left: calc(50% + 44px); right: calc(-50% + 44px); top: 29px; bottom: auto; width: auto; height: 2px;
       background: repeating-linear-gradient(to right, var(--green-mid) 0 6px, transparent 6px 12px);
     }
   }
@@ -172,7 +195,7 @@
     <div class="brand fade-in">Cuentas<span>Claras</span></div>
     <h1 class="fade-in">Organizá tus finanzas con el método 50/30/20</h1>
     <p class="fade-in">El kit completo: app web + planilla Google Sheets. Listo para usar hoy.</p>
-    <a href="#" class="btn btn-green fade-in">Quiero el kit — USD 12</a>
+    <a href="#" class="btn btn-gold fade-in">Quiero el kit — USD 12</a>
   </div>
 </header>
 
@@ -208,6 +231,34 @@
         <p>Para los que prefieren manejar sus finanzas en Excel.</p>
       </div>
     </div>
+    <div class="sheet-placeholder fade-in">
+      <span class="icon" aria-hidden="true">📊</span>
+      <span>Vista de la planilla — Google Sheets</span>
+      <small>Captura pendiente</small>
+    </div>
+  </div>
+</section>
+
+<!-- 3b. MOCKUP DE CELULAR -->
+<section class="phone-section">
+  <div class="container">
+    <h2 class="fade-in">Así se ve en tu celular</h2>
+    <div class="phone fade-in">
+      <div class="screen" id="carousel">
+        <div class="track" id="track">
+          <div class="slide"><img src="screenshots/inicio.jpg" alt="Pantalla de inicio de la app CuentasClaras" onerror="this.replaceWith('Captura: inicio')"></div>
+          <div class="slide"><img src="screenshots/movimientos.jpg" alt="Pantalla de movimientos de la app" loading="lazy" onerror="this.replaceWith('Captura: movimientos')"></div>
+          <div class="slide"><img src="screenshots/resumen.jpg" alt="Pantalla de resumen de la app" loading="lazy" onerror="this.replaceWith('Captura: resumen')"></div>
+          <div class="slide"><img src="screenshots/ajustes.jpg" alt="Pantalla de ajustes de la app" loading="lazy" onerror="this.replaceWith('Captura: ajustes')"></div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="arrow" id="prev" aria-label="Captura anterior">&#8249;</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" id="next" aria-label="Captura siguiente">&#8250;</button>
+    </div>
+    <p class="caption" id="caption" aria-live="polite"></p>
   </div>
 </section>
 
@@ -298,6 +349,39 @@
       el.style.transitionDelay = (i % 4) * 80 + 'ms';
       io.observe(el);
     });
+  })();
+
+  // Carrusel del mockup (vanilla JS)
+  (function () {
+    var track = document.getElementById('track');
+    var dotsBox = document.getElementById('dots');
+    var caption = document.getElementById('caption');
+    var names = ['Inicio', 'Movimientos', 'Resumen', 'Ajustes'];
+    var total = names.length, idx = 0, startX = null;
+    var dots = names.map(function (n, i) {
+      var b = document.createElement('button');
+      b.className = 'dot';
+      b.setAttribute('aria-label', 'Ver ' + n);
+      b.addEventListener('click', function () { go(i); });
+      dotsBox.appendChild(b);
+      return b;
+    });
+    function go(i) {
+      idx = (i + total) % total;
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+      dots.forEach(function (d, j) { d.classList.toggle('active', j === idx); });
+      caption.textContent = names[idx];
+    }
+    document.getElementById('prev').addEventListener('click', function () { go(idx - 1); });
+    document.getElementById('next').addEventListener('click', function () { go(idx + 1); });
+    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+    go(0);
   })();
 </script>
 </body>
