@@ -176,6 +176,9 @@
   .pricing { background: var(--green-dark); color: #fff; text-align: center; }
   .pricing h2 { color: #fff; margin-bottom: 16px; }
   .price { font-size: clamp(4rem, 18vw, 7rem); font-weight: 800; color: var(--gold); line-height: 1.1; }
+  .price-tag { font-size: 14px; color: #fff; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 4px; }
+  .price-old { font-size: 1.4rem; color: rgba(255,255,255,.5); text-decoration: line-through; }
+  .price-note { font-size: 13px; color: rgba(255,255,255,.75); font-style: italic; margin-top: 4px; }
   .price-sub { opacity: .9; margin: 8px 0 32px; font-size: 1.05rem; }
   .secure { margin-top: 24px; font-size: .95rem; opacity: .9; display: flex; gap: 8px; justify-content: center; align-items: center; }
 
@@ -341,7 +344,10 @@
 <section class="pricing">
   <div class="container">
     <h2 class="fade-in">Empezá hoy a tener cuentas claras</h2>
+    <p class="price-tag fade-in">🎉 Precio de lanzamiento</p>
+    <p class="price-old fade-in">USD 17</p>
     <div class="price fade-in">USD 12</div>
+    <p class="price-note fade-in">⏳ Precio sube pronto a USD 17</p>
     <p class="price-sub fade-in">Pago único. Sin suscripciones. Acceso de por vida.</p>
     <a href="#" class="btn btn-gold fade-in">Quiero el kit ahora — USD 12</a>
     <p class="secure fade-in"><span aria-hidden="true">🔒</span> Pago seguro procesado por Hotmart</p>
